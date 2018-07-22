@@ -118,3 +118,4 @@ typings/
 .sass-cache/
 *.css.map
 
+/assets/
