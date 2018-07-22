@@ -29,5 +29,5 @@ deploy:
   region: us-west-2
   detect_encoding: true
   default_text_charset: 'utf-8'
-  upload-dir: upload
+  local_dir: upload
 
