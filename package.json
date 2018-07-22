@@ -1,0 +1,32 @@
+{
+  "name": "com.tompaulus",
+  "version": "1.0.0",
+  "description": "Tom Paulus' Personal Homepage",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tpaulus/www.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tpaulus/www/issues"
+  },
+  "homepage": "https://github.com/ws-systems/www#readme",
+  "devDependencies": {
+    "@fortawesome/fontawesome-pro": "^5.1.1",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-filter": "^5.1.0",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-sass": "^3.2.1",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^1.0.3"
+  },
+  "dependencies": {}
+}
