@@ -14,6 +14,10 @@ before_script:
 
 script: gulp
 
+before_deploy:
+  - mkdir upload
+  - mv assets/ upload/
+  - mv index.html upload
 
 deploy:
   provider: s3
@@ -25,4 +29,5 @@ deploy:
   region: us-west-2
   detect_encoding: true
   default_text_charset: 'utf-8'
+  upload-dir: upload
 
