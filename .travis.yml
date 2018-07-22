@@ -7,8 +7,8 @@ git:
 
 before_script:
   - npm install -g gulp-cli
-  - npm config set "@fortawesome:registry" https://npm.fontawesome.com/ \
-      npm config set "//npm.fontawesome.com/:_authToken" $FA_TOKEN
+  - npm config set "@fortawesome:registry" https://npm.fontawesome.com/
+  - npm config set "//npm.fontawesome.com/:_authToken" $FA_TOKEN
 script: gulp
 
 
