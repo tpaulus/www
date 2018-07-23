@@ -5,8 +5,13 @@ node_js:
 git:
   depth: 1
 
+addons:
+  apt:
+    packages:
+    - imagemagick
+    - graphicsmagick
+
 before_install:
-  - apt-get install imagemagick graphicsmagick
   - npm config set "@fortawesome:registry" https://npm.fontawesome.com/
   - npm config set "//npm.fontawesome.com/:_authToken" $FA_TOKEN
 
