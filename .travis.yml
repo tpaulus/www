@@ -14,6 +14,7 @@ addons:
 before_install:
   - npm config set "@fortawesome:registry" https://npm.fontawesome.com/
   - npm config set "//npm.fontawesome.com/:_authToken" $FA_TOKEN
+  - npm install -g travis-ci-cloudfront-invalidation
 
 before_script:
   - npm install -g gulp-cli
@@ -37,3 +38,5 @@ deploy:
   default_text_charset: 'utf-8'
   local_dir: upload
 
+after_deploy:
+- travis-ci-cloudfront-invalidation -a $AWS_ACCESS -s $AWS_SECRET -c $AWS_CLOUDFRONT_DIST_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST
