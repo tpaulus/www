@@ -39,4 +39,4 @@ deploy:
   local_dir: upload
 
 after_deploy:
-- travis-ci-cloudfront-invalidation -a $AWS_ACCESS -s $AWS_SECRET -c $AWS_CLOUDFRONT_DIST_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST
+  - travis-ci-cloudfront-invalidation -a $AWS_ACCESS -s $AWS_SECRET -c $AWS_CLOUDFRONT_DIST_ID -i '/*' -b $TRAVIS_BRANCH -p $TRAVIS_PULL_REQUEST
