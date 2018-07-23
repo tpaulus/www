@@ -535,6 +535,12 @@ ul.actions {
     outline: 0;
     @include vendor('transition', 'opacity .25s ease-in-out');
 
+    @include breakpoint('<=small') {
+      & {
+        margin: 0 .10em;
+      }
+    }
+
     &.icon:before {
       padding-right: 0;
     }
@@ -767,28 +773,18 @@ ul.actions {
         }
       }
 
-      @include breakpoint('<=medium') {
+      @include breakpoint('<=small') {
         @include vendor('flex-direction', 'column');
         height: auto;
 
         .pic {
-          height: 25em;
+          height: 20em;
           width: 100%;
         }
 
         header {
-          padding: 4em;
-          text-align: center;
-        }
-      }
-
-      @include breakpoint('<=small') {
-        .pic {
-          height: 20em;
-        }
-
-        header {
           padding: 2.75em 2em 2.5em 2em;
+          text-align: center;
 
           p {
             font-size: 1em;
