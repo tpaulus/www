@@ -1,24 +1,42 @@
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     sass = require('gulp-sass'),
     filter = require('gulp-filter'),
     autoprefixer = require('gulp-autoprefixer'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
+    imageResize = require('gulp-image-resize'),
     pump = require('pump');
 
-var config = {
+const config = {
     stylesPath: 'styles/sass',
     jsPath: 'styles/js',
     imagesPath: 'images',
     outputDir: 'assets'
 };
 
-gulp.task('images', function () {
-    return gulp.src(config.imagesPath + '/*')
-        .pipe(imagemin())
-        .pipe(gulp.dest(config.outputDir + '/images'))
+gulp.task('site-images', function (cb) {
+    pump([
+        gulp.src(config.imagesPath + '/*'),
+        imageResize({
+            width : 1000,
+            height : 1000,
+            crop : false,
+            upscale : false
+        }),
+        gulp.dest(config.outputDir + '/images')
+    ], cb);
 });
+
+gulp.task('style-images', function (cb) {
+    pump([
+        gulp.src(config.imagesPath + '/style/*'),
+        imagemin(),
+        gulp.dest(config.outputDir + '/images/style')
+    ], cb);
+});
+
+gulp.task('images', gulp.parallel('site-images', 'style-images'));
 
 gulp.task('fa-css', function (cb) {
     pump([
