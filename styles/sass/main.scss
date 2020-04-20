@@ -130,8 +130,8 @@ html {
 
 body {
   background-size: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/style/bg.jpg') no-repeat fixed;
-  overflow-y: scroll;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('../images/style/bg.jpg') no-repeat top center;
+  // overflow-y: scroll;
 
   // Stops initial animations until page loads.
   &.is-preload {
