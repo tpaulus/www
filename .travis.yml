@@ -13,16 +13,6 @@ addons:
 
 before_install:
   - if ! [ -x "$(command -v aws)" ]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" ; unzip awscliv2.zip ; sudo ./aws/install ; fi
-  - |-
-    #!/usr/bin/env bash
-
-    mkdir -p ~/.aws
-
-    cat > ~/.aws/credentials << EOL
-    [default]
-    aws_access_key_id = ${AWS_ACCESS_KEY_ID}
-    aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
-    EOL
   - aws codeartifact login --tool npm --repository fontawesome-pro --domain tompaulus --domain-owner 798453335285 --region us-east-1
   - npm install -g travis-ci-cloudfront-invalidation
 
@@ -38,8 +28,8 @@ before_deploy:
 
 deploy:
   provider: s3
-  access_key_id: $AWS_ACCESS
-  secret_access_key: $AWS_SECRET
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: "tompaulus.com"
   skip_cleanup: true
   acl: public_read
