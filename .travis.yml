@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10"
+  - "lts/*"
 
 git:
   depth: 1
@@ -12,8 +12,18 @@ addons:
     - graphicsmagick
 
 before_install:
-  - npm config set "@fortawesome:registry" https://npm.fontawesome.com/
-  - npm config set "//npm.fontawesome.com/:_authToken" $FA_TOKEN
+  - if ! [ -x "$(command -v aws)" ]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" ; unzip awscliv2.zip ; sudo ./aws/install ; fi
+  - |-
+    #!/usr/bin/env bash
+
+    mkdir -p ~/.aws
+
+    cat > ~/.aws/credentials << EOL
+    [default]
+    aws_access_key_id = ${AWS_ACCESS_KEY_ID}
+    aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
+    EOL
+  - aws codeartifact login --tool npm --repository fontawesome-pro --domain tompaulus --domain-owner 798453335285 --region us-east-1
   - npm install -g travis-ci-cloudfront-invalidation
 
 before_script:
