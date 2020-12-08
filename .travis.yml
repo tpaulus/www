@@ -14,6 +14,7 @@ addons:
 before_install:
   - if ! [ -x "$(command -v aws)" ]; then curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" ; unzip awscliv2.zip ; sudo ./aws/install ; fi
   - aws codeartifact login --tool npm --repository fontawesome-pro --domain tompaulus --domain-owner 798453335285 --region us-east-1
+  - npm config set "@fortawesome:registry" https://tompaulus-798453335285.d.codeartifact.us-east-1.amazonaws.com/npm/fontawesome-pro/
   - npm install -g travis-ci-cloudfront-invalidation
 
 before_script:
